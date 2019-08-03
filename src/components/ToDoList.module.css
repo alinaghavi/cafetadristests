@@ -1,0 +1,28 @@
+.componentWrapper{
+    background-color: darkcyan;
+    border:3px solid maroon;
+}
+
+.listItemsWrapper{
+    list-style: none;
+}
+
+.listItem{
+    margin-bottom: 15px;
+}
+
+.listItem button{
+    padding: 10px;
+}
+
+.buttonsWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttonsWrapper input {
+    margin-bottom: 20px;
+    padding: 10px;
+    width:300px;
+}

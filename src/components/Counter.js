@@ -1,38 +1,71 @@
-import React, {Component} from 'react';
+import React, { useState} from 'react';
 import style from "./Counter.module.css";
 
-class Counter extends Component {
-    state = {
-        value: 0
-    };
-    inc = () => {
-        console.log("state", this.state);
-        this.setState({
-            value: this.state.value + 1
-        })
-    };
-    dec = () => {
-        this.setState({
-            value: Math.max(0, this.state.value - 1)
-        })
+
+
+// class Counter extends Component {
+//     state = {
+//         value: 0
+//     };
+//     inc = () => {
+//         console.log("state", this.state);
+//         this.setState({
+//             value: Math.min(this.props.max, this.state.value + 1)
+//         })
+//     };
+//     dec = () => {
+//         this.setState({
+//             value: Math.max(this.props.min, this.state.value - 1)
+//         })
+//     };
+//
+//     render() {
+//         return (
+//             <>
+//                 <div className={"header"}>Counter</div>
+//                 <div className={"component-wrapper " + style.componentWrapper}>
+//                     {this.state.value}
+//                 </div>
+//                 <div className="buttonsWrapper">
+//                     <button onClick={this.inc}>Increase</button>
+//
+//                     <button onClick={this.dec}>Decrease</button>
+//                 </div>
+//             </>
+//         );
+//     }
+// }
+//
+
+function Counter(props) {
+
+    let [value, setValue] = useState(0);
+
+    let inc = () => {
+        setValue(++value);
+        console.log(value)
     };
 
-    render() {
-        return (
-            <>
-                <div className={"header"}>Counter</div>
-                <div className={"component-wrapper " + style.componentWrapper}>
-                    {this.state.value}
-                </div>
-                <div className="buttonsWrapper">
-                    <button onClick={this.inc}>Increase</button>
+    let dec = () => {
+        setValue(--value);
+    };
 
-                    <button onClick={this.dec}>Decrease</button>
-                </div>
-            </>
-        );
-    }
+    if (value < props.min) {setValue(props.min)}
+
+    if (value > props.max) {setValue(props.max)}
+
+    return (
+        <div>
+            <div className={"header"}>Counter</div>
+            <div className={"component-wrapper " + style.componentWrapper}>
+                {value}
+            </div>
+            <div className="buttonsWrapper">
+                <button onClick={inc}>Increase</button>
+                <button onClick={dec}>Decrease</button>
+            </div>
+        </div>
+    )
 }
-
 
 export default Counter;

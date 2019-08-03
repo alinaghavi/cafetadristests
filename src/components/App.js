@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 import './App.css';
 import Counter from './Counter';
 import Timer from './Timer';
+import ToDoList from "./ToDoList";
 
 class App extends Component {
-    state = {
-        showTimer: true
-    };
+    // state = {
+    //     showTimer: true
+    // };
 
     componentDidMount() {
-        console.log("Main Component Mounted");
         // setInterval(() => {
         //     this.setState((prevState) => {
         //         return {
@@ -19,15 +19,12 @@ class App extends Component {
         // }, 5000)
     };
 
-    componentWillUpdate() {
-        console.log("Main Component Has been updated");
-    };
-
     render() {
         return (
             <>
+                <ToDoList />
                 <Timer />
-                <Counter />
+                <Counter min = {10} max = {20} />
             </>
         );
     }
