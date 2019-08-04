@@ -32,3 +32,9 @@ button:hover {
   background-color: white;
   color: maroon;
 }
+
+input[type=text] {
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 300px;
+}

@@ -4,39 +4,41 @@ import ToDoItems from "./ToDoItems";
 import classNames from 'classnames';
 
 class ToDoList extends Component {
+
     state = {
         todos: [
             {
                 name: 'Wash the dishes',
                 done: false,
-                key:1
+                key:0
             },
             {
                 name: 'Going bathroom',
                 done: true,
-                key:2
+                key:1
             },
             {
                 name: 'Buy somethings',
                 done: true,
-                key:3
+                key:2
             },
             {
                 name: 'Working react',
                 done: false,
-                key:4
+                key:3
             },
         ],
-        inputValue: ''
+        inputValue: '',
+        filter: 'ALL'
     };
-
 
     handleInput = (event) => {
         this.setState({
             inputValue: event.target.value
         })
     };
-    handleAddClick = (todo) => {
+
+    handleAddClick = () => {
         if (this.state.inputValue) {
             this.setState((prevState) => {
                 return {
@@ -49,16 +51,51 @@ class ToDoList extends Component {
         }
     };
 
-    deleteToDo = (itemIndex) => {
-        console.log("itemIndex", itemIndex);
-        console.log("todossssssssss", this.state.todos);
-        let newTodos = this.state.todos.filter((todo) => {
-            return todo.key !== itemIndex
+    deleteToDo = (indexItem) => {
+        let newTodos = this.state.todos.filter((todo, index) => {
+            return index !== indexItem
         });
-        console.log("newTodos", newTodos);
         this.setState({
             todos: newTodos
         })
+    };
+
+    toggleToDo = (todoIndex) => {
+        this.setState((prevState) => {
+            return {
+                todos: prevState.todos.map((todo, index) => {
+                    if(todoIndex === index)
+                        return {...todo, done: !todo.done};
+                    else return todo;
+                })
+            }
+        })
+    };
+
+    editToDo = (newName, todoIndex) => {
+        this.setState((prevState) => {
+            return {
+                todos: prevState.todos.map((todo, item) => {
+                    if(item === todoIndex) return {...todo, name : newName};
+                    else return todo
+                })
+            }
+        })
+    };
+
+    changeFilter = (filter) => {
+        this.setState({
+            filter: filter
+        })
+    };
+
+    setFilter = () => {
+        switch (this.state.filter) {
+            case 'ALL' : return this.state.todos;
+            case 'DONS' : return this.state.todos.filter(f => f.done);
+            case 'UNDONS' : return this.state.todos.filter(f => !f.done);
+            default: return
+        }
     };
 
     render() {
@@ -66,15 +103,27 @@ class ToDoList extends Component {
             <div>
                 <div className={"header"}>To DO'S</div>
                 <div className={classNames("component-wrapper", style.componentWrapper)}>
+                    <ul className={style.listItemsWrapper}>
                     {
-                        this.state.todos.map((todo) =>
-                            <ToDoItems todo={todo} deleteToDo={this.deleteToDo} key={todo.key} />
+                        this.setFilter().map((todo,index) =>
+                            <ToDoItems {...todo}
+                                       deleteToDo={() => {this.deleteToDo(index)}}
+                                       toggleToDo={() => {this.toggleToDo(index)}}
+                                       editToDo={(newName) => {this.editToDo(newName, index)}}
+                            />
                         )
                     }
+                    </ul>
                 </div>
                 <div className={classNames("buttonsWrapper", style.buttonsWrapper)}>
                     <input type="text" value={this.state.inputValue} onChange={this.handleInput}/>
                     <button onClick={this.handleAddClick}>Add Task</button>
+                </div>
+                <div className={classNames("buttonsWrapper")}>
+                    <p>Filters</p>
+                    <button onClick={() => {this.changeFilter('ALL')}} className={classNames({[style.activeFilter]: this.state.filter === "ALL"})}>All</button>
+                    <button onClick={() => {this.changeFilter('DONS')}} className={classNames({[style.activeFilter]: this.state.filter === "DONS"})}>Dons</button>
+                    <button onClick={() => {this.changeFilter('UNDONS')}} className={classNames({[style.activeFilter]: this.state.filter === "UNDONS"})}>Un-Dons</button>
                 </div>
             </div>
         );

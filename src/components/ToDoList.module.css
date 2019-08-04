@@ -26,3 +26,8 @@
     padding: 10px;
     width:300px;
 }
+
+.activeFilter {
+    background-color: blue;
+    color: #ffffff;
+}
