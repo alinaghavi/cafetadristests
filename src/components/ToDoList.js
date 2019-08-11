@@ -114,16 +114,16 @@ class ToDoList extends Component {
                         )
                     }
                     </ul>
-                </div>
-                <div className={classNames("buttonsWrapper", style.buttonsWrapper)}>
-                    <input type="text" value={this.state.inputValue} onChange={this.handleInput}/>
-                    <button onClick={this.handleAddClick}>Add Task</button>
-                </div>
-                <div className={classNames("buttonsWrapper")}>
-                    <p>Filters</p>
-                    <button onClick={() => {this.changeFilter('ALL')}} className={classNames({[style.activeFilter]: this.state.filter === "ALL"})}>All</button>
-                    <button onClick={() => {this.changeFilter('DONS')}} className={classNames({[style.activeFilter]: this.state.filter === "DONS"})}>Dons</button>
-                    <button onClick={() => {this.changeFilter('UNDONS')}} className={classNames({[style.activeFilter]: this.state.filter === "UNDONS"})}>Un-Dons</button>
+                    <div className={classNames("buttonsWrapper", style.buttonsWrapper)} style={{marginTop:'30px'}}>
+                        <input type="text" value={this.state.inputValue} onChange={this.handleInput}/>
+                        <button onClick={this.handleAddClick}>Add Task</button>
+                    </div>
+                    <div className={classNames("buttonsWrapper")} style={{marginTop:'30px'}}>
+                        <p>Filters</p>
+                        <button onClick={() => {this.changeFilter('ALL')}} className={classNames({[style.activeFilter]: this.state.filter === "ALL"})}>All</button>
+                        <button onClick={() => {this.changeFilter('DONS')}} className={classNames({[style.activeFilter]: this.state.filter === "DONS"})}>Dons</button>
+                        <button onClick={() => {this.changeFilter('UNDONS')}} className={classNames({[style.activeFilter]: this.state.filter === "UNDONS"})}>Un-Dons</button>
+                    </div>
                 </div>
             </div>
         );

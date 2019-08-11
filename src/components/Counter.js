@@ -1,6 +1,5 @@
-import React, { useState} from 'react';
+import React, {useState} from 'react';
 import style from "./Counter.module.css";
-
 
 
 // class Counter extends Component {
@@ -50,19 +49,23 @@ function Counter(props) {
         setValue(--value);
     };
 
-    if (value < props.min) {setValue(props.min)}
+    if (value < props.min) {
+        setValue(props.min)
+    }
 
-    if (value > props.max) {setValue(props.max)}
+    if (value > props.max) {
+        setValue(props.max)
+    }
 
     return (
         <div>
             <div className={"header"}>Counter</div>
             <div className={"component-wrapper " + style.componentWrapper}>
                 {value}
-            </div>
-            <div className="buttonsWrapper">
-                <button onClick={inc}>Increase</button>
-                <button onClick={dec}>Decrease</button>
+                <div className="buttonsWrapper" style={{marginTop:'30px'}}>
+                    <button onClick={inc}>Increase</button>
+                    <button onClick={dec}>Decrease</button>
+                </div>
             </div>
         </div>
     )

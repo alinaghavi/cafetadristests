@@ -112,10 +112,10 @@ function Timer() {
             <div className={"header"}>Timer</div>
             <div className={"component-wrapper " + style.componentWrapper}>
                 {value}
-            </div>
-            <div className="buttonsWrapper">
-                <button onClick={toggle}>{(start) ? ('Pause') : ('Start')}</button>
-                <button onClick={reset}>Reset</button>
+                <div className="buttonsWrapper" style={{marginTop:'30px'}}>
+                    <button onClick={toggle}>{(start) ? ('Pause') : ('Start')}</button>
+                    <button onClick={reset}>Reset</button>
+                </div>
             </div>
         </>
     )
