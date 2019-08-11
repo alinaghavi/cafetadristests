@@ -1,0 +1,24 @@
+.componentWrapper{
+    background-color: darkgoldenrod;
+    border:3px solid chartreuse;
+}
+
+.boxWrapper{
+    border: 3px solid #333;
+    width: 400px;
+    height: 400px;
+    margin:0 auto;
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.dot{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    top:230px;
+    left:50px;
+}

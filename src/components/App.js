@@ -3,6 +3,7 @@ import './App.css';
 import Counter from './Counter';
 import Timer from './Timer';
 import ToDoList from "./ToDoList";
+import MouseTracker from "./MouseTracker";
 
 class App extends Component {
     // state = {
@@ -25,6 +26,7 @@ class App extends Component {
                 <ToDoList />
                 <Timer />
                 <Counter min = {10} max = {20} />
+                <MouseTracker />
             </>
         );
     }
