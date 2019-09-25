@@ -5,7 +5,6 @@ import Timer from './Timer';
 import ToDoList from "./ToDoList";
 import MouseTracker from "./MouseTracker";
 import ActiveDetail from "./ActiveDetail";
-import VisualActiveDetail from "./VisualActiveDetail";
 
 class App extends Component {
     // state = {
@@ -26,7 +25,6 @@ class App extends Component {
         return (
             <>
                 <ActiveDetail/>
-                <VisualActiveDetail/>
                 <ToDoList />
                 <Timer />
                 <Counter min = {10} max = {20} />
