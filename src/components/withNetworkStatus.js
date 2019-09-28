@@ -3,7 +3,7 @@ import React, { Component } from "react";
 let withNetworkStatus = WrapperComponent => {
   return class withNetworkStatusWrapper extends Component {
     state = {
-      isOnline: navigator.onLine
+      isActive: navigator.onLine
     };
 
     componentDidMount() {
@@ -19,14 +19,14 @@ let withNetworkStatus = WrapperComponent => {
     handleStatusChange = event => {
       if (event.type) {
         this.setState({
-          isOnline: event.type === "online"
+          isActive: event.type === "online"
         });
       }
     };
 
     render() {
       return (
-        <WrapperComponent {...this.props} isOnline={this.state.isOnline} />
+        <WrapperComponent {...this.props} isActive={this.state.isActive} />
       );
     }
   };

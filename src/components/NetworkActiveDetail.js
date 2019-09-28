@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import withNetworkStatus from "./withNetworkStatus";
+import withActiveTabStatus from "./withActiveTabStatus";
 
 class NetworkActiveDetail extends Component {
   render() {
@@ -11,4 +12,4 @@ class NetworkActiveDetail extends Component {
   }
 }
 
-export default withNetworkStatus(NetworkActiveDetail);
+export default withActiveTabStatus(withNetworkStatus(NetworkActiveDetail));

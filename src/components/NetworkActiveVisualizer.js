@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import withNetworkStatus from "./withNetworkStatus";
+import withActiveTabStatus from "./withActiveTabStatus";
 
 class NetworkActiveVisualizer extends Component {
   render() {

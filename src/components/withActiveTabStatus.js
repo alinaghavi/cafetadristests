@@ -24,3 +24,5 @@ const withActiveTabStatus = (WrappedCompontnt) => {
         }
     }
 };
+
+export default withActiveTabStatus;
