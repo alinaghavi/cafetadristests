@@ -1,23 +1,25 @@
-import React, { Component } from "react";
-import withNetworkStatus from "./withNetworkStatus";
-import withActiveTabStatus from "./withActiveTabStatus";
+import React from "react";
+import useNetworkStatus from "./useOnlineStatus";
+import useTabStatus from "./useTabStatus";
 
-class NetworkActiveVisualizer extends Component {
-  render() {
-      console.log(this.props);
+let NetworkActiveVisualizer = (props) => {
+    let isOnline = useNetworkStatus();
+    let tabActive = useTabStatus();
     return (
-      <div
-        style={{
-          width: 200,
-          height: 200,
-          margin: "0 auto",
-          backgroundColor: this.props.isOnline
-            ? this.props.isOnlineColor
-            : this.props.isOfflineColor
-        }}
-      ></div>
+        <>
+            <p>Visual: The Tab Is {String(tabActive)}</p>
+            <div
+                style={{
+                    width: 200,
+                    height: 200,
+                    margin: "0 auto",
+                    backgroundColor: isOnline
+                        ? props.isOnlineColor
+                        : props.isOfflineColor
+                }}
+            > </div>
+        </>
     );
-  }
-}
+};
 
-export default withNetworkStatus(NetworkActiveVisualizer);
+export default NetworkActiveVisualizer;

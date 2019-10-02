@@ -1,15 +1,12 @@
-import React, { Component } from "react";
-import withNetworkStatus from "./withNetworkStatus";
-import withActiveTabStatus from "./withActiveTabStatus";
+import React from "react";
 
-class NetworkActiveDetail extends Component {
-  render() {
+let NetworkActiveDetail = (props) => {
     return (
       <div style={{ fontSize: "25px", textAlign: "center" }}>
-        Device is online : {String(this.props.isOnline)}
+        <p>Device is online : {String(props.isOnline)}</p>
+        <p>Tab is Active : {String(props.isTabActive)}</p>
       </div>
     );
-  }
-}
+};
 
-export default withActiveTabStatus(withNetworkStatus(NetworkActiveDetail));
+export default NetworkActiveDetail;
